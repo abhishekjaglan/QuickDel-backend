@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dbURI = 'mongodb+srv://quickDel:quickdel123@cluster0.thtx0uu.mongodb.net/quickdelMern?retryWrites=true&w=majority';
+const dbURI = process.env.dbURI;
 
 const mongoDB = async () => {
     try {
