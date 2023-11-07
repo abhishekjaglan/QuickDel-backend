@@ -1,12 +1,13 @@
 const express = require('express')
 const app = express()
-const port = 4000
+const PORT = process.env.PORT || 4000
 const mongoDB = require('./db')
+const BASE_URL = process.env.BASE_URL
 
 mongoDB();
 
 app.use((req,res,next) => {
-    res.setHeader("Access-Control-Allow-Origin","http://localhost:3000");
+    res.setHeader("Access-Control-Allow-Origin",`${BASE_URL}`);
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept"
@@ -28,6 +29,6 @@ app.use('/api', require("./Routes/OrderData"));
 
 app.use('/api', require("./Routes/MyOrdersData"));
 
-app.listen(port, () => {
-    console.log(`Backend is running at port ${port}`)
+app.listen(PORT, () => {
+    console.log(`Backend is running at PORT ${PORT}`)
 })
